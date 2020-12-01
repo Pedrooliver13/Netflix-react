@@ -1,6 +1,6 @@
-// import React from 'react';
+const useRandom = (totalLength) => {
+  const randomNumber = Math.floor(Math.random() * (totalLength - 1));
+  return randomNumber;
+};
 
-// const useRandom = (totalLength, category) => {
-// }
-
-// export default useRandom;
+export default useRandom;

@@ -5,7 +5,7 @@ const Loading = () => {
   return (
     <LoadingWrapper>
       <img
-        src="https://cdn.lowgif.com/small/0534e2a412eeb281-the-counterintuitive-tech-behind-netflix-s-worldwide.gif"
+        src="https://www.agenciatatu.com.br/wp-content/uploads/netflix.gif"
         alt="tela de Loading"
       />
     </LoadingWrapper>

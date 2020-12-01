@@ -2,9 +2,11 @@ import styled from 'styled-components';
 import {MD} from '../../Styles/Breakpoints';
 
 export const SlideWrapper = styled.section`
+  position:relative;
   overflow: hidden;
   margin-top: -100px;
   margin-bottom: 120px;
+  /* z-index: 99999; */
 `;
 
 export const SlideTitle = styled.h1`

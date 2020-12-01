@@ -7,31 +7,22 @@ const Container = `
     margin-left: auto;
   }
 
-  /* BREAKPOINT 576px */
-  @media (min-width: 36em) {
-    .container {
-      max-width: 540px;
-    }
-  }
 
   /* BREAKPOINT 768px */
-  @media (min-width: 48em) {
+  @media (max-width: 48em) {
     .container {
-      max-width: 720px;
+      padding-right: 1rem;
+      padding-left: 1rem;
     }
   }
-
-  /* BREAKPOINT 992px */
-  @media (min-width: 62em) {
-    .container {
-      max-width: 960px;
-    }
-  }
+  
 
   /* BREAKPOINT 1200px */
   @media (min-width: 75em) {
     .container {
-      max-width: 1920px;
+      max-width: 100%;
+      padding-right: 2rem;
+      padding-left: 2rem;
     }
   }
 `;

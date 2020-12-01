@@ -1,45 +1,64 @@
 import React from 'react';
+import Button from '../Form/Button/Button';
+import { IMAGE_GET } from '../../Api/Api';
 import {
   FeaturedBackground,
   FeaturedWrapper,
   FeaturedTitle,
+  FeaturedInfo,
   FeaturedDescription,
+  FeaturedButtons,
+  FeaturedGenres
 } from './style';
 
 export const FeaturedMovie = ({ item }) => {
   const {
     backdrop_path,
-    title,
+    name,
     vote_average,
     overview,
-    genre_ids,
-    release_dat,
+    number_of_seasons,
+    genres,
+    first_air_date,
   } = item;
+
+  const genresReduce = genres.reduce((acc, {name}) => {
+    return [...acc, name]
+  }, []);
+  const genresRow = genresReduce.join(', ');
 
   let descr = overview;
   if (descr.length > 200) {
     descr = descr.substring(0, 200) + '...';
   }
 
-  console.log(title, vote_average, overview, release_dat);
+  const date = new Date(first_air_date).getFullYear();
 
   return (
     <FeaturedBackground
-      style={{
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundImage: `url(https://image.tmdb.org/t/p/original${backdrop_path})`,
-      }}
+      image={backdrop_path}
+      style={{ backgroundImage: `url(${IMAGE_GET.url}${backdrop_path})` }}
     >
       <FeaturedWrapper>
-        <FeaturedTitle>{title}</FeaturedTitle>
-        {/* <FeaturedInfo>
-          <p></p>
-        </FeaturedInfo> */}
+        <FeaturedTitle>{name}</FeaturedTitle>
+
+        <FeaturedInfo>
+          <p className="featured__average">{vote_average} pontos</p>
+          <p>{date}</p>
+          <p>{number_of_seasons} Temporadas</p>
+        </FeaturedInfo>
+
         <FeaturedDescription>{descr}</FeaturedDescription>
+
+        <FeaturedButtons>
+          <Button color="primary">► Assistir</Button>
+          <Button>+ Minha Lista</Button>
+        </FeaturedButtons>
+
+        <FeaturedGenres><span>Gêneros:</span> {genresRow}</FeaturedGenres>
       </FeaturedWrapper>
     </FeaturedBackground>
   );
 };
 
-export default React.memo(FeaturedMovie);
+export default FeaturedMovie;

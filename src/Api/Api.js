@@ -1,12 +1,16 @@
+import basicFecth from '../Hooks/useFetch';
 export const API_KEY = `a07e592732452c3835f07ddffbf00470`;
 export const API_URL = `https://api.themoviedb.org/3`;
 export const LANGUAGE = `pt-BR`;
 
+
 // get image `https://image.tmdb.org/t/p/w300%${item.poster_path}`;
+// get video.
+// https://api.themoviedb.org/3/movie/550/videos?api_key=a07e592732452c3835f07ddffbf00470&language=en-US
 
 export const MOVIE_GET = (id) => {
   return {
-    url: `${API_URL}/movie/${id}?api_key=${API_KEY}`,
+    url: `${API_URL}/tv/${id}?language=${LANGUAGE}&api_key=${API_KEY}`,
     options: {
       method: 'GET',
       headers: {
@@ -16,15 +20,19 @@ export const MOVIE_GET = (id) => {
   };
 };
 
+export const IMAGE_GET = {
+  url: `https://image.tmdb.org/t/p/original`,
+};
+
 export const GENRES_GET = {
   url: `${API_URL}genre/movie/list?api_key=${API_KEY}&language=${LANGUAGE}`,
   options: {
-    method: "GET",
+    method: 'GET',
     headers: {
-      "Content-Type": "application/json",
-    }
-  }
-}
+      'Content-Type': 'application/json',
+    },
+  },
+};
 
 export const MOVIES_ORIGINAL_GET = {
   title: 'Originais do Netflix',
@@ -81,16 +89,7 @@ export const MOVIES_ACTION_GET = {
   },
 };
 
-const basicFecth = async (url) => {
-  return (
-    await fetch(`${url}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-  ).json();
-};
+
 
 export const listResults = {
   getHomeList: async () => {
@@ -121,6 +120,11 @@ export const listResults = {
         items: await basicFecth(
           `${API_URL}/discover/movie?with_genres=35&${LANGUAGE}&api_key=${API_KEY}`,
         ),
+      },
+      {
+        slug: 'tv',
+        title: TVMOVIES_GET.title,
+        items: await basicFecth(TVMOVIES_GET.url),
       },
     ];
   },

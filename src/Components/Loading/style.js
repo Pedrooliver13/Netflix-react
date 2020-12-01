@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { MD } from '../../Styles/Breakpoints';
 
 export const LoadingWrapper = styled.section`
   position: fixed;
@@ -6,16 +7,23 @@ export const LoadingWrapper = styled.section`
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 99;
+  max-width: 100%;
+  width: 100%;
+  z-index: 99999;
   background-color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
 
   img {
-    width: 600px;
+    max-width: 50%;
     right: 20px;
     object-fit: contain;
+
+    @media (max-width: ${MD}) {
+      max-width: 100%;
+      object-fit: cover;
+    }
   }
 
 `;
