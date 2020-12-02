@@ -7,8 +7,6 @@ export const LoadingWrapper = styled.section`
   left: 0;
   right: 0;
   bottom: 0;
-  max-width: 100%;
-  width: 100%;
   z-index: 99999;
   background-color: #000;
   display: flex;
@@ -17,12 +15,12 @@ export const LoadingWrapper = styled.section`
 
   img {
     max-width: 50%;
+    width: 100%;
     right: 20px;
     object-fit: contain;
 
     @media (max-width: ${MD}) {
       max-width: 100%;
-      object-fit: cover;
     }
   }
 

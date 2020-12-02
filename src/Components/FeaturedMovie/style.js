@@ -42,7 +42,7 @@ export const FeaturedWrapper = styled.div`
   flex-direction: column;
   max-width: 750px;
   padding-top: 12rem;
-  padding-left: 2rem;
+  padding-left: 2.5rem;
   line-height: 1.5;
 
   @media (max-width: ${MD}) {
@@ -54,7 +54,7 @@ export const FeaturedWrapper = styled.div`
 
 export const FeaturedTitle = styled.h1`
   font-weight: 800;
-  font-size: 2.2rem;
+  font-size: 3rem;
   @media (max-width: ${MD}) {
     font-size: 1.5rem;
   }
@@ -78,7 +78,7 @@ export const FeaturedInfo = styled.div`
 export const FeaturedDescription = styled.p`
   max-width: 65%;
   color: ${({ theme }) => theme.color5};
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   line-height: 1;
   margin: 1.2rem 0;
 

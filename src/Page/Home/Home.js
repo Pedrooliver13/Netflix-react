@@ -1,13 +1,14 @@
 import React from 'react';
-import FeaturedMovie from '../Components/FeaturedMovie/FeaturedMovie';
-import MoviesRow from '../Components/MoviesRow/MoviesRow';
-import Loading from '../Components/Loading/Loading';
-import { listResults, MOVIE_GET } from '../Api/Api';
+import FeaturedMovie from '../../Components/FeaturedMovie/FeaturedMovie';
+import MoviesRow from '../../Components/MoviesRow/MoviesRow';
+import Loading from '../../Components/Loading/Loading';
+import { listResults, MOVIE_GET } from '../../Api/Api';
 
 const Home = () => {
   const [moviesList, setMoviesList] = React.useState([]);
   const [featuredItem, setFeaturedItem] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
+  const hasItems = !moviesList.length && !featuredItem;
 
   React.useEffect(() => {
     function getRandomNumber(totalLength) {
@@ -47,17 +48,19 @@ const Home = () => {
 
     async function onStart() {
       setLoading(true);
+      
       const list = await getList();
       const categoryResults = await filterList(list);
       const featuredItem = getFeaturedItem(categoryResults);
-
+      
       await fetchMovieFeatured(featuredItem.id);
       setMoviesList(list);
-      setTimeout(() => setLoading(false), 1260);
+      
+      if (hasItems) setTimeout(() => setLoading(false), 1250);
     }
-    
+
     onStart();
-  }, []);
+  }, [hasItems]);
 
   return (
     <>

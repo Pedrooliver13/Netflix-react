@@ -1,8 +1,7 @@
-import basicFecth from '../Hooks/useFetch';
+import BasicFetch from '../Hooks/useFetch';
 export const API_KEY = `a07e592732452c3835f07ddffbf00470`;
 export const API_URL = `https://api.themoviedb.org/3`;
 export const LANGUAGE = `pt-BR`;
-
 
 // get image `https://image.tmdb.org/t/p/w300%${item.poster_path}`;
 // get video.
@@ -89,42 +88,40 @@ export const MOVIES_ACTION_GET = {
   },
 };
 
-
-
 export const listResults = {
   getHomeList: async () => {
     return [
       {
         slug: 'originals',
         title: MOVIES_ORIGINAL_GET.title,
-        items: await basicFecth(MOVIES_ORIGINAL_GET.url),
+        items: await BasicFetch(MOVIES_ORIGINAL_GET.url),
       },
       {
         slug: 'trending',
         title: MOVIES_TRENDING_GET.title,
-        items: await basicFecth(MOVIES_TRENDING_GET.url),
+        items: await BasicFetch(MOVIES_TRENDING_GET.url),
       },
       {
         slug: 'toprated',
         title: MOVIES_TOP_GET.title,
-        items: await basicFecth(MOVIES_TOP_GET.url),
+        items: await BasicFetch(MOVIES_TOP_GET.url),
       },
       {
         slug: 'action',
         title: MOVIES_ACTION_GET.title,
-        items: await basicFecth(MOVIES_ACTION_GET.url),
+        items: await BasicFetch(MOVIES_ACTION_GET.url),
       },
       {
         slug: 'comedy',
         title: 'Comédia',
-        items: await basicFecth(
+        items: await BasicFetch(
           `${API_URL}/discover/movie?with_genres=35&${LANGUAGE}&api_key=${API_KEY}`,
         ),
       },
       {
         slug: 'tv',
         title: TVMOVIES_GET.title,
-        items: await basicFecth(TVMOVIES_GET.url),
+        items: await BasicFetch(TVMOVIES_GET.url),
       },
     ];
   },

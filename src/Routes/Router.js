@@ -5,7 +5,8 @@ import Colors from '../Styles/Colors';
 
 import Header from '../Components/Header/Header';
 import Footer from '../Components/Footer/Footer';
-import Home from '../Page/Home';
+import Home from '../Page/Home/Home';
+import ShowMovie from '../Page/ShowMovie/ShowMovie';
 import Page404 from '../Components/Page404/Page404';
 
 const Router = () => {
@@ -17,6 +18,7 @@ const Router = () => {
 
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="movie/:id" element={<ShowMovie />}/>
           <Route path="*" element={<Page404 />} />
         </Routes>
 
