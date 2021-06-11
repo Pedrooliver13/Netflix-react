@@ -41,7 +41,7 @@ export const FeaturedWrapper = styled.div`
   align-content: space-between;
   flex-direction: column;
   max-width: 750px;
-  padding-top: 12rem;
+  padding-top: 15rem;
   padding-left: 2.5rem;
   line-height: 1.5;
 
